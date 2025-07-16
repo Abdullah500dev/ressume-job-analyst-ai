@@ -18,6 +18,11 @@ var/
 wheels/
 *.egg-info/
 .installed.cfg
+
+# Virtual Environment
+venv/
+env/
+ENV/
 *.egg
 .pytest_cache/
 .coverage

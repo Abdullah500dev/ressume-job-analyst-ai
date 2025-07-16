@@ -31,7 +31,22 @@ async def analyze_resume(file: UploadFile = File(...)):
             json={
                 "model": "resume-analyst",
                 "stream": True,
-                "prompt": f"This is a resume:\n\n{resume_text.strip()}\n\nPlease analyze it.",
+                "prompt": f"""
+                    This is a resume:
+
+                    {resume_text.strip()}
+
+                    Please analyze the resume and respond in the following structured format:
+
+                    1. Overall Structure and Clarity
+                    2. Strengths
+                    3. Weaknesses
+                    4. Recommendations for improvement (bullet points)
+                    5. Suitable job titles based on skills and experience (at least 3 roles, e.g. 'Full Stack Developer', 'AI Engineer', etc.)
+                    6. Final Thoughts
+
+                    Keep the tone professional and concise. Use Markdown formatting.
+                """,
             },
             stream=True,
         ) as response:
